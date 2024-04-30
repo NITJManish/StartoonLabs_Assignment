@@ -14,7 +14,7 @@ const UserGraph = () => {
   const fetchUserData = async () => {
     try {
       // Replace this URL with your backend/API endpoint to fetch user data
-      const response = await fetch('https://your-api-url.com/users');
+      const response = await fetch('http://localhost:5000/users');
       if (!response.ok) {
         throw new Error('Failed to fetch user data');
       }

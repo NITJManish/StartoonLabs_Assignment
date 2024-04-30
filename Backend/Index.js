@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
@@ -75,6 +75,17 @@ app.post('/login', async (req, res) => {
     await user.save();
 
     res.status(200).json({ token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+//api to find all users
+app.get('/users', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
