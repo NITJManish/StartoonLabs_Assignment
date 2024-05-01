@@ -46,7 +46,8 @@ const Login = () => {
             <input type="password" name='password' value={formData.password} placeholder='Password' onChange={handleChange} required />
           </div>
           <div className='button-sign'>
-          <Link style={{textDecoration: 'none'}} to='/'><button className='sign-in' type="submit">Sign In</button></Link>
+          <button className='sign-in' type="submit">Sign In</button>
+          {/* <Link style={{textDecoration: 'none'}} to='/'><button className='sign-in' type="submit">Sign In</button></Link> */}
           <Link style={{textDecoration: 'none'}} to='/register'><button className='sign-up' type="submit">Sign Up</button></Link>
           </div>
         </form>
