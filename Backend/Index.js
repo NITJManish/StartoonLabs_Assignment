@@ -92,6 +92,32 @@ app.get('/users', async (req, res) => {
   }
 });
 
+const loggedInUsers = new Set();
+
+// Middleware for authentication
+function isAuthenticated(req, res, next) {
+    // Check if user is logged in
+    if (loggedInUsers.has(req.session.userId)) { // Assuming you're using sessions
+        return next();
+    } else {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
+}
+app.post('/logout', isAuthenticated, (req, res) => {
+  const userId = req.session.userId; // Assuming you're using sessions
+  // Remove user from the logged-in users list
+  loggedInUsers.delete(userId);
+  // Destroy the session
+  req.session.destroy((err) => {
+      if (err) {
+          console.error("Error destroying session:", err);
+          return res.status(500).json({ error: "Internal Server Error" });
+      }
+      // Send response indicating successful logout
+      return res.status(200).json({ message: "Logged out successfully" });
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

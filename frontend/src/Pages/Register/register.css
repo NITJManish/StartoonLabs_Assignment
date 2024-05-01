@@ -40,10 +40,12 @@
 .sign-up{
   background-color:  rgb(127, 208, 5);
   color: white;
+  width: 100px;
 }
 .sign-in{
   background-color: red;
   color: white;
+  width: 100px;
 }
   button {
     width: 45%;

@@ -15,7 +15,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/login', {
+      const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,6 +27,7 @@ const Login = () => {
       }
       const data = await response.json();
       localStorage.setItem('token', data.token);
+      window.location.href = '/home';
       alert('Login successful');
     } catch (error) {
       console.error(error);
@@ -39,16 +40,14 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
          
           <div className="form-group">
-            <input type="email" value={email} placeholder='Email' onChange={handleChange} required />
+            <input type="email" name='email' value={formData.email} placeholder='Email' onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <input type="password" value={password} placeholder='Password' onChange={handleChange} required />
+            <input type="password" name='password' value={formData.password} placeholder='Password' onChange={handleChange} required />
           </div>
           <div className='button-sign'>
-          <button className='sign-in' type="submit">Sign In</button>
-          <button className='sign-up' type="submit">Sign Up</button>
-          {/* <Link to='/'><button className='sign-in' type="submit">Sign In</button></Link> */}
-          {/* <Link to='/register'><button className='sign-up' type="submit">Sign Up</button></Link> */}
+          <Link style={{textDecoration: 'none'}} to='/'><button className='sign-in' type="submit">Sign In</button></Link>
+          <Link style={{textDecoration: 'none'}} to='/register'><button className='sign-up' type="submit">Sign Up</button></Link>
           </div>
         </form>
       </div>

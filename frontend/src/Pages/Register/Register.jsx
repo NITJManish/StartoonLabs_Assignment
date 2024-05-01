@@ -40,26 +40,24 @@ const Register = () => {
             <h2>Sign Up</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <input type="text" value={name} placeholder='Name' onChange={handleChange} required />
+                    <input name='name' type="text" value={formData.name} placeholder='Name' onChange={handleChange} required />
                 </div>
                 <div className="form-group">
-                    <input type="password" value={password} placeholder='Password' onChange={handleChange} required />
+                    <input type="password" name='password' value={formData.password} placeholder='Password' onChange={handleChange} required />
                 </div>
                 <div className="form-group">
-                    <input type="email" value={email} placeholder='Email' onChange={handleChange} required />
+                    <input type="email" name='email' value={formData.email} placeholder='Email' onChange={handleChange} required />
                 </div>
                 <div className="form-group gender-mf">
                     <label>Gender:</label>
-                    <input type="radio" id="html" name="fav_language" value={gender} onChange={handleChange} />
+                    <input type="radio" name='gender' id="html" value={formData.gender} onChange={handleChange} />
                     <label for="html">Male</label>
-                        <input type="radio" id="css" name="fav_language" value={gender} onChange={handleChange}  />
+                        <input type="radio" id="css" name="fav_language" value={formData.gender} onChange={handleChange}  />
                         <label for="css">Female</label>                   
                         </div>
                         <div className='button-sign'>
-                        <button className='sign-up' type="submit">Sign Up</button>
-                        <button className='sign-in' type="submit">Sign In</button>
-                       {/* <Link to='/register'> <button className='sign-up' type="submit">Sign Up</button></Link> */}
-                        {/* <Link to='/'><button className='sign-in' type="submit">Sign In</button></Link> */}
+                       <Link style={{textDecoration: 'none'}} to='/register'> <button className='sign-up' type="submit">Sign Up</button></Link>
+                        <Link style={{textDecoration: 'none'}} to='/'><button className='sign-in' type="submit">Sign In</button></Link>
                         </div>
                     </form>
                 </div>
