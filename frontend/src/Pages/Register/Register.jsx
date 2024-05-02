@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import './register.css';
 
 const Register = () => {
@@ -28,8 +28,11 @@ const Register = () => {
             throw new Error('Registration failed');
           }
           alert('Registration successful');
+          window.location.href = '/';
         } catch (error) {
           console.error(error);
+      console.log(error);
+
           alert('Registration failed');
         }
       };
@@ -57,8 +60,9 @@ const Register = () => {
                         </div>
                         <div className='button-sign'>
                         <button className='sign-up' type="submit">Sign Up</button>
+                        <button className='sign-in' type="submit">Sign In</button>
                        {/* <Link style={{textDecoration: 'none'}} to='/register'> <button className='sign-up' type="submit">Sign Up</button></Link> */}
-                        <Link style={{textDecoration: 'none'}} to='/'><button className='sign-in' type="submit">Sign In</button></Link>
+                        {/* <Link style={{textDecoration: 'none'}} to='/'><button className='sign-in' type="submit">Sign In</button></Link> */}
                         </div>
                     </form>
                 </div>

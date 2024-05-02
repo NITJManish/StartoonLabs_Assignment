@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const cors = require('cors');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -29,6 +30,8 @@ const User = mongoose.model('User', userSchema);
 
 // Middleware for JSON parsing
 app.use(express.json());
+app.use(cors());
+
 
 // Register endpoint
 app.post('/register', async (req, res) => {

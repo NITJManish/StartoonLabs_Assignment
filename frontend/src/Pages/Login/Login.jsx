@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import './login.css'
 
 const Login = () => {
@@ -31,6 +31,7 @@ const Login = () => {
       alert('Login successful');
     } catch (error) {
       console.error(error);
+      console.log(error);
       alert('Login failed');
     }
   };
@@ -47,8 +48,9 @@ const Login = () => {
           </div>
           <div className='button-sign'>
           <button className='sign-in' type="submit">Sign In</button>
+          <button className='sign-up' type="submit">Sign Up</button>
           {/* <Link style={{textDecoration: 'none'}} to='/'><button className='sign-in' type="submit">Sign In</button></Link> */}
-          <Link style={{textDecoration: 'none'}} to='/register'><button className='sign-up' type="submit">Sign Up</button></Link>
+          {/* <Link style={{textDecoration: 'none'}} to='/register'><button className='sign-up' type="submit">Sign Up</button></Link> */}
           </div>
         </form>
       </div>
