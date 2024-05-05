@@ -40,7 +40,7 @@ function App() {
     <Routes>
      {!isLoggedIn && <Route exact path="/" element={<Login/>} />}
         <Route path="register" element={<Register/>} />
-       {isLoggedIn && <Route path="home" element={<Home/>} />} 
+       {isLoggedIn && <Route path="home" element={<Home />} />} 
         {isLoggedIn && <Route path="admindashboard" element={<AdminDashboard/>} />}
     </Routes>
     </BrowserRouter>

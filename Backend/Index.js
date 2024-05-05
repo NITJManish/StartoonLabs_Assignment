@@ -48,6 +48,7 @@ app.post('/register', async (req, res) => {
 
     await newUser.save();
     res.status(201).json({ message: 'User registered successfully' });
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
@@ -77,7 +78,8 @@ app.post('/login', async (req, res) => {
     user.lastLoginDate = Date.now();
     await user.save();
 
-    res.status(200).json({ token });
+    res.status(200).json({ success:true, token: token });
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });

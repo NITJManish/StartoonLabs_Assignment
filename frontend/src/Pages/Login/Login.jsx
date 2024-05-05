@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import './login.css'
 
 const Login = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -27,8 +29,18 @@ const Login = () => {
       }
       const data = await response.json();
       localStorage.setItem('token', data.token);
+      // window.location.href = '/home';
+      // alert('Login successful');
+      setIsLoggedIn(true);
+      setShowMessage(true);
+
+    // Hide the message after 10 seconds
+    setTimeout(() => {
+      setShowMessage(false);
       window.location.href = '/home';
-      alert('Login successful');
+    }, 5000); // 10 seconds in milliseconds
+    // window.location.href = '/home';
+
     } catch (error) {
       console.error(error);
       console.log(error);
@@ -47,8 +59,20 @@ const Login = () => {
             <input type="password" name='password' value={formData.password} placeholder='Password' onChange={handleChange} required />
           </div>
           <div className='button-sign'>
-          <button className='sign-in' type="submit">Sign In</button>
+          <div>
+      {showMessage && (
+        <p>Welcome! You have successfully logged in.</p>
+      )}
+      {!isLoggedIn && (
+        <>
+        <button className='sign-in' type="submit">Sign In</button>
           <button className='sign-up' type="submit">Sign Up</button>
+        </>
+      )}
+    </div>
+     {/*
+          <button className='sign-in' type="submit">Sign In</button>
+          <button className='sign-up' type="submit">Sign Up</button> */}
           {/* <Link style={{textDecoration: 'none'}} to='/'><button className='sign-in' type="submit">Sign In</button></Link> */}
           {/* <Link style={{textDecoration: 'none'}} to='/register'><button className='sign-up' type="submit">Sign Up</button></Link> */}
           </div>
